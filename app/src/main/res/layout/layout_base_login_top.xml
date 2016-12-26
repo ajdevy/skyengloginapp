@@ -1,0 +1,23 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/login_top_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/text_view_color"
+        app:typeface="roboto_regular"
+        tools:text="Some text that goes on the top" />
+
+    <com.devspark.robototextview.widget.RobotoEditText
+        android:id="@+id/login_edit_text"
+        style="@style/LoginEditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:typeface="roboto_regular"
+        tools:hint="some@email.com" />
+
+</merge>

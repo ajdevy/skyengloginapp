@@ -1,0 +1,27 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.devspark.robototextview.widget.RobotoButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:theme="@style/LoginButtonStyle"
+        style="@style/Widget.AppCompat.Button.Colored"
+        app:typeface="roboto_regular"
+        tools:text="Login" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        android:id="@+id/login_action_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:textColor="@color/action_text_color"
+        app:typeface="roboto_regular"
+        tools:text="Action text" />
+
+</merge>

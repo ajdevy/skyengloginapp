@@ -1,0 +1,7 @@
+<merge>
+
+    <include layout="@layout/layout_base_login_top" />
+
+    <include layout="@layout/layout_base_login_bottom" />
+
+</merge>

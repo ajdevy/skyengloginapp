@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Вход</string>
+    <string name="email">Электронная почта</string>
+    <string name="main_login_top_text">Войдите под вашим аккаунтом в школе Skyeng и получите доступ к мобильному личному кабинету.</string>
+    <string name="main_login_button_text">Получить код для входа</string>
+    <string name="plain_entrance_with_password">Обычный вход с паролем</string>
+    <string name="main_login_bottom_text">Сложный пароль или не хотите искать — войдите по коду. Или используйте обычный вход.</string>
+    <string name="email_not_valid">Введена неправильная электронная почта</string>
+    <string name="getting_code_wait">Отправка кода.\n Подождите…</string>
+    <string name="code_sent_to_phone">Введите код (отправлен на телефон %1$s)</string>
+    <string name="code_sent_to_email">Введите код (отправлен на почту %1$s)</string>
+    <string name="code_sent_to_email_no_email_string">Введите код (отправлен на почту)</string>
+    <string name="code">Код</string>
+    <string name="resend_code_phone_number">Выслать код повторно (59с)</string>
+    <string name="enter">Войти</string>
+    <string name="logout">Выйти</string>
+    <string name="please_enter_code">Введите код</string>
+    <string name="could_not_connect">Не удалось подключиться. Проверьте интернет-соединение.</string>
+    <string name="wrong_code">Неверный код</string>
+    <string name="logging_in_wait">Выполняется вход. Подождите…</string>
+    <string name="could_not_login">Вход не выполнен</string>
+    <string name="login_password_top_text">Войдите под вашим аккаунтом в школе Skyeng и получите доступ к мобильному личному кабинету.</string>
+    <string name="password">Пароль</string>
+    <string name="login_password_bottom_text">Сложный пароль или не хотите искать — используйте вход без пароля.</string>
+    <string name="enter_code">Введите код</string>
+    <string name="youve_entered">Вы вошли</string>
+    <string name="login_without_password">Войти без пароля</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="wrong_email">Неверный адрес электронной почты</string>
+    <string name="wrong_email_or_password" >Неверный адрес электронной </string>
+    <string name="could_not_send_code">Код не выслан</string>
+</resources>

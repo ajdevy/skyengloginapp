@@ -1,0 +1,12 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:id="@+id/layout_container"
+    android:paddingRight="16dp">
+
+    <include layout="@layout/layout_base_login" />
+
+</LinearLayout>
