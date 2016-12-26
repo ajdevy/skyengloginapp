@@ -1,6 +1,7 @@
 package com.skyeng.app.login.ui;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,8 +29,12 @@ public class EnterLoginCodeFragment extends BaseLoginFragment {
     private static final String ARGUMENT_PHONE_NUMBER = "ARGUMENT_PHONE_NUMBER";
     private static final String ARGUMENT_EMAIL = "ARGUMENT_EMAIL";
 
+    private static final long RESEND_COUNTDOWN_TIME = 59000;
+
     @Inject
     LoginController loginController;
+
+    private CountDownTimer resendCodeCountDownTimer;
 
     public static EnterLoginCodeFragment newInstance(String phoneNumber, String email) {
         final Bundle arguments = new Bundle();
@@ -80,19 +85,32 @@ public class EnterLoginCodeFragment extends BaseLoginFragment {
 
     @Override
     protected void onActionTextClicked() {
-        final String email = getEmail();
-        if (!TextUtils.isEmpty(email)) {
-            loginController
-                    .sendCode(email)
-                    .compose(bindToLifecycle())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(result -> {
-                        hideLoadingDialog();
-                    }, throwable -> {
-                        hideLoadingDialog();
-                        Log.e(TAG, "got an error", throwable);
-                    });
+        if (resendCodeCountDownTimer == null) {
+            resendCodeCountDownTimer = new CountDownTimer(RESEND_COUNTDOWN_TIME, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    actionText.setText(getString(R.string.resend_code_phone_number_countdown_format, millisUntilFinished / 1000));
+                }
+
+                public void onFinish() {
+                    actionText.setText(R.string.resend_code_phone_number);
+                    resendCodeCountDownTimer = null;
+                }
+            }.start();
+            final String email = getEmail();
+            if (!TextUtils.isEmpty(email)) {
+                loginController
+                        .sendCode(email)
+                        .compose(bindToLifecycle())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(result -> {
+                            hideLoadingDialog();
+                        }, throwable -> {
+                            hideLoadingDialog();
+                            Log.e(TAG, "got an error", throwable);
+                        });
+            }
         }
     }
 
@@ -104,22 +122,24 @@ public class EnterLoginCodeFragment extends BaseLoginFragment {
     private void tryToLogin() {
         final String code = getCode();
         if (!TextUtils.isEmpty(code)) {
-            showLoadingDialog(R.string.logging_in_wait);
-            loginController.login(code)
-                    .compose(bindToLifecycle())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(result -> {
-                        hideLoadingDialog();
-                        if (result.hasError()) {
-                            handleLoginError(result.getErrorCode());
-                        } else {
-                            ((MainActivity) getActivity()).openMainFragment();
-                        }
-                    }, throwable -> {
-                        hideLoadingDialog();
-                        handleLoginError(throwable);
-                    });
+            if (resendCodeCountDownTimer == null) {
+                showLoadingDialog(R.string.logging_in_wait);
+                loginController.login(code)
+                        .compose(bindToLifecycle())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(result -> {
+                            hideLoadingDialog();
+                            if (result.hasError()) {
+                                handleLoginError(result.getErrorCode());
+                            } else {
+                                ((MainActivity) getActivity()).openMainFragment();
+                            }
+                        }, throwable -> {
+                            hideLoadingDialog();
+                            handleLoginError(throwable);
+                        });
+            }
         } else {
             editText.setError(getString(R.string.please_enter_code));
         }

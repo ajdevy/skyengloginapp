@@ -12,7 +12,8 @@
     <string name="code_sent_to_email">Введите код (отправлен на почту %1$s)</string>
     <string name="code_sent_to_email_no_email_string">Введите код (отправлен на почту)</string>
     <string name="code">Код</string>
-    <string name="resend_code_phone_number">Выслать код повторно (59с)</string>
+    <string name="resend_code_phone_number_countdown_format">Выслать код повторно (%1$dс)</string>
+    <string name="resend_code_phone_number">Выслать код повторно</string>
     <string name="enter">Войти</string>
     <string name="logout">Выйти</string>
     <string name="please_enter_code">Введите код</string>
@@ -28,6 +29,6 @@
     <string name="login_without_password">Войти без пароля</string>
     <string name="enter_password">Введите пароль</string>
     <string name="wrong_email">Неверный адрес электронной почты</string>
-    <string name="wrong_email_or_password" >Неверный адрес электронной </string>
+    <string name="wrong_email_or_password">Неверный адрес электронной почты</string>
     <string name="could_not_send_code">Код не выслан</string>
 </resources>

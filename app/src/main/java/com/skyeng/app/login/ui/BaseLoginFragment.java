@@ -35,7 +35,7 @@ public abstract class BaseLoginFragment extends RxFragment {
     TextView topText;
 
     @Bind(R.id.login_action_text)
-    TextView loginActionText;
+    TextView actionText;
 
     @Bind(R.id.login_edit_text)
     EditText editText;
@@ -90,7 +90,7 @@ public abstract class BaseLoginFragment extends RxFragment {
         });
 
         button.setText(getButtonTextResourceId());
-        loginActionText.setText(getTextActionText());
+        actionText.setText(getTextActionText());
     }
 
     protected void validateInputAndSetButtonEnabled(CharSequence text) {
